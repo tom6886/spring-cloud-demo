@@ -1,0 +1,17 @@
+server:
+  port: 9090
+
+spring:
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        healthCheckPath: /ok/health
+        healthCheckInterval: 15s
+        instance-id: demo-${CONSUL_IP_ADDRESS:127.0.0.1}-${server.port}
+        prefer-ip-address: true
+        ip-address: ${CONSUL_IP_ADDRESS:127.0.0.1}
+        port: ${CONSUL_PORT:9090}
+  application:
+    name: consul-demo
